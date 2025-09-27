@@ -1,9 +1,17 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
 
-::github{repo="saicaca/fuwari"}
+This is the profile for [Siyu Zhang](https://github.com/SiyuZhang-0426).
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+::github{repo="SiyuZhang-0426/SiyuZhang-0426.github.io"}
+
+## About Me
+
+I am currently an undergraduate student (2022-2026) in Jilin University. I was fortunate to work with [Dr. Liang Pan](https://scholar.google.com/citations?user=lSDISOcAAAAJ&hl=zh-CN) at Shanghai AI Lab, [Prof. Yong Lai](https://ccst.jlu.edu.cn/info/1028/19286.htm) at Key Laboratory of SCKE, Jilin University, and [Prof. Xiaohu Shi](vttps://ccst.jlu.edu.cn/info/1367/19338.htm) at Machine Learning Lab, Jilin University.
+
+## Research interest
+
+I am broadly interested in research on computer vision and computer graphics.
+
+## Miscellaneous
+
+In my spare time, I love digital art creation, photography and traveling.
