@@ -61,7 +61,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Email",
 			icon: "fa6-solid:envelope",
-			url: "mailto:sylyuzhang@gmail.com"
+			url: "mailto:sylyuzhang@gmail.com",
 		},
 		{
 			name: "LinkedIn",
