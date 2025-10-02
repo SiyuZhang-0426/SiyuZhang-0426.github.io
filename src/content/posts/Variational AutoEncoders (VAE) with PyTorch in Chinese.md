@@ -9,15 +9,15 @@ draft: false
 
 # Background
 
-本文原作者为[Alexander Van de Kleut](https://avandekleut.github.io/vae/)。翻译内容由[Deepseek](https://www.deepseek.com/)生成，并经由本人检查。若翻译存在任何不准确的地方，还请参考原文。
+本文原作者为[Alexander Van de Kleut](https://avandekleut.github.io/vae/)。翻译由[Deepseek](https://www.deepseek.com/)生成，并经由本人检查。若翻译存在任何不准确的地方，还请参考原文。
 
 > 在不影响主要内容的情况下，本人将添加适当的注释。
 
 # Motivation
 
-假设我们拥有一个大规模的高维数据集。例如，考虑一个由数千张图像组成的数据集。每张图像由数百个像素构成，因此每个数据点均具有数百个维度。**[流形假设](https://deepai.org/machine-learning-glossary-and-terms/manifold-hypothesis)** 指出，真实世界中的高维数据实际上是由嵌入高维空间中的低维数据所组成。这意味着，尽管实际数据本身可能具有数百个维度，但数据的内在结构仅需少数维度即可充分描述。
+假设我们拥有一个大规模的高维数据集。例如，考虑一个由数千张图像组成的数据集。每张图像由数百个像素构成，因此每个数据点均有数百个维度。**[流形假设](https://deepai.org/machine-learning-glossary-and-terms/manifold-hypothesis)** 指出，真实世界中的高维数据实际上是由嵌入高维空间中的低维数据所组成。这意味着，尽管实际数据本身可能具有数百个维度，但数据的内在结构仅需少数维度即可充分描述。
 
-这正是降维技术背后的动机，其旨在将高维数据投影到低维表面上。对于大多数习惯于在二维（或偶尔三维）空间中可视化信息的人类而言，这通常意味着将数据投影到二维表面。降维技术的示例包括[主成分分析（PCA）](https://en.wikipedia.org/wiki/Principal_component_analysis)和[t-分布随机邻域嵌入（t-SNE）](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)。Chris Olah的博客中有一篇[优秀文章](https://colah.github.io/posts/2014-10-Visualizing-MNIST/)，回顾了应用于MNIST数据集的一些降维技术。
+这正是降维技术背后的动机，旨在将高维数据投影到低维表面上。对于大多数习惯于在二维（或偶尔三维）空间中可视化信息的人而言，这意味着将数据投影到二维表面。降维技术的示例包括[主成分分析（PCA）](https://en.wikipedia.org/wiki/Principal_component_analysis)和[t-分布随机邻域嵌入（t-SNE）](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)。Chris Olah的博客中有一篇[优秀文章](https://colah.github.io/posts/2014-10-Visualizing-MNIST/)，回顾了应用于MNIST数据集的一些降维技术。
 
 神经网络常应用于**监督学习**场景，该场景下的数据由若干对$(x, y)$组成，网络通过学习得到一个函数$f:X \to Y$。这一框架既适用于**回归问题**（其中$y$是$x$的连续函数），也适用于**分类问题**（其中$y$是$x$的离散标签）。然而，神经网络在**无监督学习**场景中也展现出显著优势，此类场景的数据仅包含数据点$x$，不存在“目标”或“标签”$y$。其目标在于学习并理解数据的内部结构。就降维而言，其目标是寻找数据的低维表示。
 
@@ -29,7 +29,7 @@ draft: false
 
 解码器学习一个非线性变换 $d: Z \to X$，该变换将潜向量投影回原始的高维输入空间 $X$。此变换应能利用潜向量 $z = e(x)$ 来重构原始输入数据 $\hat{x} = d(z) = d(e(x))$。
 
-自编码器即是编码器与解码器的组合 $f(x) = d(e(x))$。训练自编码器的目标是通过一种**重构损失**函数来最小化输入 $x$ 与重构结果 $\hat{x}$ 之间的差异。由于自编码器是作为一个整体进行训练的（我们称其为“端到端”训练），因此我们同时优化编码器和解码器。
+自编码器即是编码器与解码器的组合 $f(x) = d(e(x))$。训练自编码器的目标是通过一种**重构损失**函数来最小化输入 $x$ 与重构结果 $\hat{x}$ 之间的差异。由于自编码器作为一个整体进行训练（我们称其为“端到端”训练），因此我们同时优化编码器和解码器。
 
 以下是一个使用 PyTorch 实现的自编码器代码。我们将其应用于 MNIST 数据集。
 
@@ -63,7 +63,7 @@ class Encoder(nn.Module):
         return self.linear2(x)
 ```
 
-我们为`Decoder`类采用了类似的方法，并确保对输出进行重塑处理。
+我们为`Decoder`类采用了类似的方法。
 
 ```py
 class Decoder(nn.Module):
@@ -78,7 +78,7 @@ class Decoder(nn.Module):
         return z
 ```
 
-最后，我们编写一个整合了编码器与解码器的`Autoencoder`类。需要指出的是，虽然我们本可以轻松地将整个自编码器实现为单个神经网络，但将其拆分为两个部分能使概念表述更为清晰。
+最后，我们编写一个整合了编码器与解码器的`Autoencoder`类。需要指出的是，虽然我们可以轻松地将整个自编码器实现为单个神经网络，但将其拆分为两个部分能使概念表述更为清晰。
 
 ```py
 class Autoencoder(nn.Module):
@@ -94,9 +94,9 @@ class Autoencoder(nn.Module):
 ```
 
 > 此处对原文中代码进行了略微调整。
-> 引入`input_dims`与`hidden_dims`使其更规范易读。
+> 引入`input_dims`与`hidden_dims`使代码更规范易读。
 > 在`Autoencoder`类的`forward`方法中`reshape`最终结果而非`Decoder`类中。
-> 同样，在后续`VariationalEncoder`与`VariationalAutoencoder`类中，也进行了相似的调整。
+> 同样，在后续`VariationalEncoder`与`VariationalAutoencoder`类中，也进行了相似的调整，不再赘述。
 
 接下来，我们将编写相应的代码，以在MNIST数据集上训练该自编码器。
 
@@ -159,8 +159,8 @@ Epoch 19, loss 1895050.8400878906
 
 训练完成自编码器后，我们应关注哪些方面？作者认为以下几点具有参考价值：
 
-1.  **考察潜空间**：若潜空间为二维，则可通过编码器对一批输入数据 $x$ 进行变换，并将其输出向量以散点图形式呈现。鉴于MNIST数据集包含标签信息，我们可对不同类别输出结果进行颜色编码，以便直观观察其分布特性。
-2.  **对潜空间进行采样以生成输出**：若潜空间为二维，我们可在均匀网格上对潜向量 $z$ 进行采样，并将解码后的潜向量以网格形式进行可视化呈现。
+1.  **考察潜空间**：若潜空间为二维，则可通过编码器对一批输入数据 $x$ 进行变换，并将其输出向量以散点图形式呈现。鉴于MNIST数据集包含标签信息，我们可以对不同类别输出结果进行颜色编码，以便直观观察其分布特性。
+2.  **对潜空间进行采样以生成输出**：若潜空间为二维，我们可以在均匀网格上对潜向量 $z$ 进行采样，并将解码后的潜向量以网格形式进行可视化呈现。
 
 ```py
 def plot_latent(autoencoder, data, num_batches=100):
@@ -178,7 +178,7 @@ plot_latent(autoencoder, data)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://github.com/SiyuZhang-0426/SiyuZhang-0426.github.io/blob/main/src/content/posts/Variational%20AutoEncoders%20(VAE)%20with%20PyTorch%20in%20Chinese/figure%201.png"/>
+	<img src="Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 1.png"/>
 </div>
 
 
@@ -202,12 +202,12 @@ plot_reconstructed(autoencoder)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://github.com/SiyuZhang-0426/SiyuZhang-0426.github.io/blob/main/src/content/posts/Variational%20AutoEncoders%20(VAE)%20with%20PyTorch%20in%20Chinese/figure%202.png"/>
+	<img src="Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 2.png"/>
 </div>
 
 我们有意采用与实际潜向量数值范围相近的尺度来绘制重构的潜向量。可以观察到，重构后的潜向量呈现出数字形态，且数字的类别与潜向量在潜空间中的位置存在对应关系。
 
-您可能已经注意到，潜空间中存在一些从未被数据映射到的"间隙"区域。当我们尝试将自编码器用作**生成模型**时，这就成为了一个问题。生成模型的目标是从数据集$X$中学习分布，并生成与$X$同分布的新数据点。对自编码器而言，这意味着从潜空间$Z$中采样潜向量$z \sim Z$，然后通过解码器将这些潜向量解码生成图像。如果我们从潜空间中某个解码器在训练期间从未见过的区域采样潜向量，其输出可能完全无法形成有意义的图像。这一点在`plot_reconstructed`输出的左上角区域尤为明显——该区域在潜空间中处于空白状态，而对应的解码数字也无法匹配任何现有数字类别。
+你可能已经注意到，潜空间中存在一些从未被数据映射到的"间隙"区域。当我们尝试将自编码器用作**生成模型**时，这就成为了一个问题。生成模型的目标是从数据集$X$中学习分布，并生成与$X$同分布的新数据点。对自编码器而言，这意味着从潜空间$Z$中采样潜向量$z \sim Z$，然后通过解码器将这些潜向量解码生成图像。如果我们从潜空间中某个解码器在训练期间从未见过的区域采样潜向量，其输出可能完全无法形成有意义的图像。这一点在`plot_reconstructed`输出的左上角区域尤为明显——该区域在潜空间中处于空白状态，而对应的解码数字也无法匹配任何现有数字类别。
 
 # Variational Autoencoders
 
@@ -224,7 +224,7 @@ $$
 \mathbb{KL}\left( \mathcal{N}(\mu, \sigma) \parallel \mathcal{N}(0, 1) \right) = \sum_{x \in X} \left( \sigma^2 + \mu^2 - \log \sigma - \frac{1}{2} \right)
 $$
 
-该表达式适用于两个单变量高斯分布（两个任意单变量高斯分布的完整表达式推导可参阅[此数学堆栈交换帖子](https://stats.stackexchange.com/questions/7440/kl-divergence-between-two-univariate-gaussians)）。将其扩展到我们的对角高斯分布并不困难；我们只需对每个维度的KL散度进行求和。
+该表达式适用于两个单变量高斯分布（两个任意单变量高斯分布的完整表达式推导可参阅[此数学stackexchange帖子](https://stats.stackexchange.com/questions/7440/kl-divergence-between-two-univariate-gaussians)）。将其扩展到我们的对角高斯分布并不困难；我们只需对每个维度的KL散度进行求和。
 
 该损失函数的重要性体现在两个方面。首先，若没有此项，我们将无法通过梯度下降法训练编码器网络，因为梯度无法通过采样操作（这是一种不可微操作）进行反向传播。其次，通过以这种方式惩罚KL散度，我们可以促使潜向量分布更集中于中心区域且更均匀。实质上，我们强制编码器寻找近似遵循标准高斯分布的潜向量，从而使得解码器能够有效地进行解码。
 
@@ -325,7 +325,7 @@ plot_latent(vae, data)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://github.com/SiyuZhang-0426/SiyuZhang-0426.github.io/blob/main/src/content/posts/Variational%20AutoEncoders%20(VAE)%20with%20PyTorch%20in%20Chinese/figure%203.png"/>
+	<img src="Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 3.png"/>
 </div>
 
 可以观察到，相较于传统自编码器，变分自编码器生成的潜向量数值范围显著缩小且分布更为集中。潜变量的后验分布 $p(z \mid x)$ 整体上更接近高斯分布。
@@ -339,7 +339,7 @@ plot_reconstructed(vae, r0=(-3, 3), r1=(-3, 3))
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://github.com/SiyuZhang-0426/SiyuZhang-0426.github.io/blob/main/src/content/posts/Variational%20AutoEncoders%20(VAE)%20with%20PyTorch%20in%20Chinese/figure%204.png"/>
+	<img src="Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 4.png"/>
 </div>
 
 # Conclusions
@@ -377,7 +377,7 @@ interpolate(vae, x_1, x_2, n=20)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://github.com/SiyuZhang-0426/SiyuZhang-0426.github.io/blob/main/src/content/posts/Variational%20AutoEncoders%20(VAE)%20with%20PyTorch%20in%20Chinese/figure%205.png"/>
+	<img src="Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 5.png"/>
 </div>
 
 ```py
@@ -387,10 +387,10 @@ interpolate(autoencoder, x_1, x_2, n=20)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://github.com/SiyuZhang-0426/SiyuZhang-0426.github.io/blob/main/src/content/posts/Variational%20AutoEncoders%20(VAE)%20with%20PyTorch%20in%20Chinese/figure%206.png"/>
+	<img src="Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 6.png"/>
 </div>
 
-此外，笔者还希望编写相应代码以生成描述过渡过程的动态GIF图像，而非仅呈现静态图像序列。以下代码通过修改前述实现方案，最终输出可动态演示插值过程的GIF文件。
+此外，作者还希望编写相应代码以生成描述过渡过程的动态GIF图像，而非仅呈现静态图像序列。以下代码通过修改前述实现方案，最终输出可动态演示插值过程的GIF文件。
 
 ```py
 def interpolate_gif(autoencoder, filename, x_1, x_2, n=100):
@@ -413,5 +413,5 @@ interpolate_gif(vae, "vae", x_1, x_2)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://github.com/SiyuZhang-0426/SiyuZhang-0426.github.io/blob/main/src/content/posts/Variational%20AutoEncoders%20(VAE)%20with%20PyTorch%20in%20Chinese/figure%20vae.gif"/>
+	<img src="Variational AutoEncoders (VAE) with PyTorch in Chinese/vae.gif"/>
 </div>
