@@ -6,12 +6,13 @@ This is the profile for [Siyu Zhang](https://github.com/SiyuZhang-0426).
 
 ## About Me
 
-I am currently an undergraduate student (2022-2026) in Jilin University. I was fortunate to work with [Dr. Liang Pan](https://scholar.google.com/citations?user=lSDISOcAAAAJ&hl=zh-CN) at Shanghai AI Lab, [Prof. Yong Lai](https://ccst.jlu.edu.cn/info/1028/19286.htm) at Key Laboratory of SCKE, Jilin University and [Prof. Xiaohu Shi](https://ccst.jlu.edu.cn/info/1367/19338.htm) at Machine Learning Lab, Jilin University.
+I'm an undergraduate student (2022 - 2026) at [Jilin University](https://www.jlu.edu.cn/), currently serving as an AIGC intern at the [Shanghai Artificial Intelligence Laboratory](https://www.shlab.org.cn/), under the supervision of [Dr. Liang Pan](https://scholar.google.com/citations?user=lSDISOcAAAAJ).
+I also had the opportunity to collaborate with [Prof. Yong Lai](https://ccst.jlu.edu.cn/info/1028/19286.htm) at Jilin University’s [Key Laboratory of SCKE](https://scke.jlu.edu.cn/).
 
-## Research interest
+## Research Interests
 
-I am broadly interested in research on computer vision and computer graphics.
+My research focuses on computer vision and computer graphics.
 
 ## Miscellaneous
 
-In my spare time, I love digital art creation, photography and traveling.
+In my free time, I enjoy creating digital art, photography, and traveling.

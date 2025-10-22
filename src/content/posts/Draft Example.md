@@ -1,8 +1,8 @@
 ---
 title: Draft Example
-published: 2025-10-07
+published: 2025-09-16
 description: Draft Example
-tags: [Markdown, Draft, Guide]
+tags: [Draft, Guide]
 category: Guide
 draft: true
 ---

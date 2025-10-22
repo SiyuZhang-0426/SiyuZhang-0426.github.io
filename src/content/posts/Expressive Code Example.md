@@ -1,6 +1,6 @@
 ---
 title: Expressive Code Example
-published: 2025-10-07
+published: 2025-09-16
 description: Expressive Code Example
 tags: [Markdown, Guide]
 category: Guide

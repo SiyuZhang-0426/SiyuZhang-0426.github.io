@@ -1,15 +1,14 @@
 ---
 title: Markdown Extended Features
-published: 2024-05-01
-updated: 2024-11-29
-description: 'Read more about Markdown features in Fuwari'
-image: ''
-tags: [Demo, Example, Markdown, Fuwari]
-category: 'Examples'
+published: 2025-09-16
+description: Markdown Extended Features
+tags: [Markdown, Guide]
+category: Guide
 draft: false 
 ---
 
 ## GitHub Repository Cards
+
 You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API. 
 
 ::github{repo="Fabrizz/MMM-OnSpotify"}
@@ -17,7 +16,7 @@ You can add dynamic cards that link to GitHub repositories, on page load, the re
 Create a GitHub repository card with the code `::github{repo="<owner>/<repo>"}`.
 
 ```markdown
-::github{repo="saicaca/fuwari"}
+::github{repo="SiyuZhang-0426/SiyuZhang-0426.github.io"}
 ```
 
 ## Admonitions
