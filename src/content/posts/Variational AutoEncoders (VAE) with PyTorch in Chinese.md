@@ -19,7 +19,7 @@ draft: false
 
 这正是降维技术背后的动机，旨在将高维数据投影到低维表面上。对于大多数习惯于在二维（或偶尔三维）空间中可视化信息的人而言，这意味着将数据投影到二维表面。降维技术的示例包括[主成分分析（PCA）](https://en.wikipedia.org/wiki/Principal_component_analysis)和[t-分布随机邻域嵌入（t-SNE）](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)。Chris Olah的博客中有一篇[优秀文章](https://colah.github.io/posts/2014-10-Visualizing-MNIST/)，回顾了应用于MNIST数据集的一些降维技术。
 
-神经网络常应用于**监督学习**场景，该场景下的数据由若干对$(x, y)$组成，网络通过学习得到一个函数$f:X \to Y$。这一框架既适用于**回归问题**（其中$y$是$x$的连续函数），也适用于**分类问题**（其中$y$是$x$的离散标签）。然而，神经网络在**无监督学习**场景中也展现出显著优势，此类场景的数据仅包含数据点$x$，不存在“目标”或“标签”$y$。其目标在于学习并理解数据的内部结构。就降维而言，其目标是寻找数据的低维表示。
+神经网络常应用于**监督学习**场景，该场景下的数据由若干对$(x, y)$组成，网络通过学习得到一个函数$f:X \to Y$。这一框架既适用于**回归问题**（其中$y$是$x$的连续函数），也适用于**分类问题**（其中$y$是$x$的离散标签）。然而，神经网络在**无监督学习**场景中也表现出显著优势，此类场景的数据仅包含数据点$x$，不存在“目标”或“标签”$y$。其目标在于学习并理解数据的内部结构。就降维而言，其目标是寻找数据的低维表示。
 
 # Autoencoders
 
@@ -178,7 +178,7 @@ plot_latent(autoencoder, data)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://raw.githubusercontent.com/SiyuZhang-0426/SiyuZhang-0426.github.io/main/src/content/posts/Variational%20AutoEncoders%20%28VAE%29%20with%20PyTorch%20in%20Chinese/figure%201.png"/>
+	<img src="./Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 1.png" alt="图1：自编码器潜空间可视化"/>
 </div>
 
 
@@ -202,7 +202,7 @@ plot_reconstructed(autoencoder)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://raw.githubusercontent.com/SiyuZhang-0426/SiyuZhang-0426.github.io/main/src/content/posts/Variational%20AutoEncoders%20%28VAE%29%20with%20PyTorch%20in%20Chinese/figure%202.png"/>
+	<img src="./Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 2.png" alt="图2：自编码器重构结果"/>
 </div>
 
 我们有意采用与实际潜向量数值范围相近的尺度来绘制重构的潜向量。可以观察到，重构后的潜向量呈现出数字形态，且数字的类别与潜向量在潜空间中的位置存在对应关系。
@@ -325,7 +325,7 @@ plot_latent(vae, data)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://raw.githubusercontent.com/SiyuZhang-0426/SiyuZhang-0426.github.io/main/src/content/posts/Variational%20AutoEncoders%20%28VAE%29%20with%20PyTorch%20in%20Chinese/figure%203.png"/>
+	<img src="./Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 3.png" alt="图3：变分自编码器潜空间可视化"/>
 </div>
 
 可以观察到，相较于传统自编码器，变分自编码器生成的潜向量数值范围显著缩小且分布更为集中。潜变量的后验分布 $p(z \mid x)$ 整体上更接近高斯分布。
@@ -339,7 +339,7 @@ plot_reconstructed(vae, r0=(-3, 3), r1=(-3, 3))
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://raw.githubusercontent.com/SiyuZhang-0426/SiyuZhang-0426.github.io/main/src/content/posts/Variational%20AutoEncoders%20%28VAE%29%20with%20PyTorch%20in%20Chinese/figure%204.png"/>
+	<img src="./Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 4.png" alt="图4：变分自编码器重构结果"/>
 </div>
 
 # Conclusions
@@ -377,7 +377,7 @@ interpolate(vae, x_1, x_2, n=20)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://raw.githubusercontent.com/SiyuZhang-0426/SiyuZhang-0426.github.io/main/src/content/posts/Variational%20AutoEncoders%20%28VAE%29%20with%20PyTorch%20in%20Chinese/figure%205.png"/>
+	<img src="./Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 5.png" alt="图5：变分自编码器数字插值"/>
 </div>
 
 ```py
@@ -387,7 +387,7 @@ interpolate(autoencoder, x_1, x_2, n=20)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://raw.githubusercontent.com/SiyuZhang-0426/SiyuZhang-0426.github.io/main/src/content/posts/Variational%20AutoEncoders%20%28VAE%29%20with%20PyTorch%20in%20Chinese/figure%206.png"/>
+	<img src="./Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 6.png" alt="图6：自编码器数字插值"/>
 </div>
 
 此外，作者还希望编写相应代码以生成描述过渡过程的动态GIF图像，而非仅呈现静态图像序列。以下代码通过修改前述实现方案，最终输出可动态演示插值过程的GIF文件。
@@ -413,5 +413,5 @@ interpolate_gif(vae, "vae", x_1, x_2)
 > 代码执行结果如下。
 
 <div align=center>
-	<img src="https://raw.githubusercontent.com/SiyuZhang-0426/SiyuZhang-0426.github.io/main/src/content/posts/Variational%20AutoEncoders%20%28VAE%29%20with%20PyTorch%20in%20Chinese/vae.gif"/>
+	<img src="./Variational AutoEncoders (VAE) with PyTorch in Chinese/vae.gif" alt="变分自编码器数字插值动画"/>
 </div>
