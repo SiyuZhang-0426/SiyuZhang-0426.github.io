@@ -1,5 +1,5 @@
 ---
-title: Draft Example
+title: Draft-Example
 published: 2025-09-16
 description: Draft Example
 tags: [Draft, Guide]

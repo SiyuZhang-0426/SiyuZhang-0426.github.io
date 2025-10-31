@@ -1,5 +1,5 @@
 ---
-title: Variational AutoEncoders (VAE) with PyTorch in Chinese
+title: VAE-in-Chinese
 published: 2025-09-28
 description: Variational AutoEncoders (VAE) with PyTorch in Chinese
 tags: [VAE, GenerativeModels, ComputerVision]
@@ -177,7 +177,7 @@ plot_latent(autoencoder, data)
 
 > 代码执行结果如下。
 
-![figure-1](Variational AutoEncoders (VAE) with PyTorch in Chinese/figure-1.png)
+![figure-1](VAE-in-Chinese/figure-1.png)
 
 训练所得的潜向量能够将相似的数字样本聚类在一起。同时，我们还可以从潜空间中进行均匀采样，进而观察解码器如何根据任意潜向量重构输入数据。
 

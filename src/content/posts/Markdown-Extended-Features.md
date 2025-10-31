@@ -1,5 +1,5 @@
 ---
-title: Markdown Extended Features
+title: Markdown-Extended-Features
 published: 2025-09-16
 description: Markdown Extended Features
 tags: [Markdown, Guide]

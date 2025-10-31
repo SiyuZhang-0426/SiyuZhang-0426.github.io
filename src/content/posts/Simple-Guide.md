@@ -1,5 +1,5 @@
 ---
-title: Simple Guide
+title: Simple-Guide
 published: 2025-09-16
 description: Simple Guide
 tags: [Markdown, Guide]

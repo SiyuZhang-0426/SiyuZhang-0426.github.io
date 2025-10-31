@@ -1,5 +1,5 @@
 ---
-title: Markdown Example
+title: Markdown-Example
 published: 2025-09-16
 description: Markdown Example
 tags: [Markdown, Guide]

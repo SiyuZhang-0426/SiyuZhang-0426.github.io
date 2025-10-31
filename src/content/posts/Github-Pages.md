@@ -1,5 +1,5 @@
 ---
-title: How to build Github Pages
+title: Github-Pages
 published: 2025-10-30
 description: How to build Github Pages
 tags: [Github, Guide]
