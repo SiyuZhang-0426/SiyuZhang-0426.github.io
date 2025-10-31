@@ -177,10 +177,7 @@ plot_latent(autoencoder, data)
 
 > 代码执行结果如下。
 
-<div align=center>
-	<img src="/src/content/posts/Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 1.png" alt="图1：自编码器潜空间可视化"/>
-</div>
-
+![figure-1](Variational AutoEncoders (VAE) with PyTorch in Chinese/figure-1.png)
 
 训练所得的潜向量能够将相似的数字样本聚类在一起。同时，我们还可以从潜空间中进行均匀采样，进而观察解码器如何根据任意潜向量重构输入数据。
 
@@ -201,9 +198,7 @@ plot_reconstructed(autoencoder)
 
 > 代码执行结果如下。
 
-<div align=center>
-	<img src="/src/content/posts/Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 2.png" alt="图2：自编码器重构结果"/>
-</div>
+![figure-2](Variational AutoEncoders (VAE) with PyTorch in Chinese/figure-2.png)
 
 我们有意采用与实际潜向量数值范围相近的尺度来绘制重构的潜向量。可以观察到，重构后的潜向量呈现出数字形态，且数字的类别与潜向量在潜空间中的位置存在对应关系。
 
@@ -324,9 +319,7 @@ plot_latent(vae, data)
 
 > 代码执行结果如下。
 
-<div align=center>
-	<img src="/src/content/posts/Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 3.png" alt="图3：变分自编码器潜空间可视化"/>
-</div>
+![figure-3](Variational AutoEncoders (VAE) with PyTorch in Chinese/figure-3.png)
 
 可以观察到，相较于传统自编码器，变分自编码器生成的潜向量数值范围显著缩小且分布更为集中。潜变量的后验分布 $p(z \mid x)$ 整体上更接近高斯分布。
 
@@ -338,9 +331,7 @@ plot_reconstructed(vae, r0=(-3, 3), r1=(-3, 3))
 
 > 代码执行结果如下。
 
-<div align=center>
-	<img src="/src/content/posts/Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 4.png" alt="图4：变分自编码器重构结果"/>
-</div>
+![figure-4](Variational AutoEncoders (VAE) with PyTorch in Chinese/figure-4.png)
 
 # Conclusions
 
@@ -376,9 +367,7 @@ interpolate(vae, x_1, x_2, n=20)
 
 > 代码执行结果如下。
 
-<div align=center>
-	<img src="/src/content/posts/Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 5.png" alt="图5：变分自编码器数字插值"/>
-</div>
+![figure-5](Variational AutoEncoders (VAE) with PyTorch in Chinese/figure-5.png)
 
 ```py
 interpolate(autoencoder, x_1, x_2, n=20)
@@ -386,9 +375,7 @@ interpolate(autoencoder, x_1, x_2, n=20)
 
 > 代码执行结果如下。
 
-<div align=center>
-	<img src="/src/content/posts/Variational AutoEncoders (VAE) with PyTorch in Chinese/figure 6.png" alt="图6：自编码器数字插值"/>
-</div>
+![figure-6](Variational AutoEncoders (VAE) with PyTorch in Chinese/figure-6.png)
 
 此外，作者还希望编写相应代码以生成描述过渡过程的动态GIF图像，而非仅呈现静态图像序列。以下代码通过修改前述实现方案，最终输出可动态演示插值过程的GIF文件。
 
@@ -412,6 +399,4 @@ interpolate_gif(vae, "vae", x_1, x_2)
 
 > 代码执行结果如下。
 
-<div align=center>
-	<img src="/src/content/posts/Variational AutoEncoders (VAE) with PyTorch in Chinese/vae.gif" alt="变分自编码器数字插值动画"/>
-</div>
+![vae](Variational AutoEncoders (VAE) with PyTorch in Chinese/vae.gif)
