@@ -1,6 +1,6 @@
 ---
 title: From-DDPM-to-IDDPM
-published: 2025-09-28
+published: 2025-11-21
 description: From Denoising Diffusion Probabilistic Models (DDPM) to Improved Denoising Diffusion Probabilistic Models (IDDPM)
 tags: [Diffusion, GenerativeModels, ComputerVision]
 category: ComputerVision
@@ -157,12 +157,6 @@ DDPM论文中，给出采样步骤如下：
 1. 从标准正态分布中采样得到 $\mathbf{x}_T$
 2. 重复 $T$ 步去噪过程，得到 $\mathbf{x}_0$
 
-## Summary
-
-到此为止我们回顾了DDPM的理论，但显然相比于GAN、VAE等早期方法，DDPM的采样过程是相当低效的；同时在FID、Inception Score等量化指标上，DDPM也未能达到sota。
-
-尽管如此，DDPM还是唤起了社区对Diffusion的研究热情，在2020年发表在NeurIPS后，相当多的Diffusion工作开始涌现。DDIM便是其中一员。
-
 # DDIM
 
 DDIM由Stanford研究人员在2020年10月发表在arxiv，并被ICLR 2021接受。
@@ -284,7 +278,7 @@ $$
 
 1. 采样一致性：DDIM的采样是确定的，其结果只受 $\mathbf{x}_T$ 影响。经过实验验证，对于同一 $\mathbf{x}_T$ 使用不同采样过程，将生成相近的 $\mathbf{x}_0$ 。因此 $\mathbf{x}_T$ 在一定程度上可以视作 $\mathbf{x}_0$ 的嵌入。
 
-    > 一致性可为生成图像提供了trick。在初始选取较小的时间步数量生成较为粗糙的图像，若符合预期，再使用较大时间步数量进行精细生成。
+    > 一致性为生成图像提供了trick。在初始选取较小的时间步数量生成较为粗糙的图像，若符合预期，再使用较大时间步数量进行精细生成。
 
 2. 语义插值效应： $\mathbf{x}_T$ 可以视作 $\mathbf{x}_0$ 的嵌入，则应当同样具有隐概率模型的语义差值效应。实验首先选取隐变量 $\mathbf{x}_T^{(0)}$ 与 $\mathbf{x}_T^{(1)}$ ，分别采样得到结果。随后使用球面线性插值得到一系列中间隐变量。其中插值定义为：
 
@@ -293,15 +287,6 @@ $$
     $$
 
     其中 $\theta=\arccos\left(\frac{(\mathbf{x}_T^{(0)})^T\mathbf{x}_T^{(1)}}{||\mathbf{x}_T^{(0)}||~||\mathbf{x}_T^{(1)}||}\right)$ 。
-
-## Summary
-
-DDIM的推导是比较优美的，结果也是如此。最重要的是对采样速度有所提升。DDIM和IDDPM均包含了对DDPM采样速度进行优化的尝试，相比之下DDIM解决的方式更加彻底，这导致实际上部分模型在采样时遵循了DDIM的路线，如Stable Diffusion。
-
-而区别于DDIM，IDDPM主要针对DDPM的训练过程进行改进，主要包括两个方面：
-
-1. 替换DDPM中固定方差为可学习的方差
-2. 加噪过程使用余弦形式Scheduler
 
 # IDDPM
 
@@ -383,16 +368,12 @@ $$
 这是因为不同时间步VLB损失大小不一，均匀采样时间步 $t$ 会引入比较多的噪音。为了解决这一问题，作者引入重要性采样：
 
 $$
-L_\mathrm{vlb}=E_{t\sim p_t}\left[\frac{L_t}{p_t}\right],\text{where}~p\propto\sqrt{E[L_t^2]}~\text{and}~\sum p_t=1
+L_\mathrm{vlb}=E_{t\sim p_t}\left(\frac{L_t}{p_t}\right),\text{where}~p\propto\sqrt{E(L_t^2)},\sum p_t=1
 $$
 
 其中由于 $E[L_t^2]$ 未知且在训练过程中变化，实际上训练时候会保存10项历史损失，并对此进行动态更新。
 
 除此之外，这些损失还能用于计算每个时间步的权重，在计算最终损失时每个时间步损失先乘以对应的权重，再进行加和得到整体损失。
-
-## Summary
-
-IDDPM相比DDIM，主要进行工程上的优化。这些工作奠定了Diffusion在生成领域的地位。
 
 # References
 
