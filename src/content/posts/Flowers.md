@@ -4,7 +4,7 @@ published: 2025-12-26
 description: 我总觉得，将少女比作花儿太过轻巧。
 tags: [Blog]
 category: Life
-draft: true
+draft: false
 ---
 
 我总觉得，将少女比作花儿太过轻巧。从花儿与少年的固定搭配，到文艺作品中那些温婉的描摹，再到生活中笑靥如花的寻常赞美。仿佛唯有花朵，才能承载讴歌她们的青春与光彩。
