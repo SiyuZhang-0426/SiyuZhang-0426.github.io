@@ -6,7 +6,7 @@ This is the profile for [Siyu Zhang](https://github.com/SiyuZhang-0426).
 
 ## About Me
 
-I'm an undergraduate student (2022 - 2026) at [Jilin University](https://www.jlu.edu.cn/), currently serving as an AIGC intern at the [Shanghai Artificial Intelligence Laboratory](https://www.shlab.org.cn/), under the supervision of [Dr. Liang Pan](https://scholar.google.com/citations?user=lSDISOcAAAAJ).
+I'm an undergraduate student (2022 - 2026) at [Jilin University](https://www.jlu.edu.cn/), currently serving as an research intern at the [Shanghai Artificial Intelligence Laboratory](https://www.shlab.org.cn/), under the supervision of [Dr. Yihao Liu](https://scholar.google.com/citations?user=WRIYcNwAAAAJ).
 
 ## Research Interests
 
