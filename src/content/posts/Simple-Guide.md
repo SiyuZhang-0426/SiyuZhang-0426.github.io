@@ -4,7 +4,7 @@ published: 2025-09-16
 description: Simple Guide
 tags: [Markdown, Guide]
 category: Guide
-draft: false
+draft: true
 ---
 
 This blog template is built with [Astro](https://astro.build/). For the things that are not mentioned in this guide, you may find the answers in the [Astro Docs](https://docs.astro.build/).
